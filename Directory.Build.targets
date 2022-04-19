@@ -1,0 +1,25 @@
+<Project>
+    <PropertyGroup>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+        <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+        <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+        <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+        <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+        <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    </PropertyGroup>
+    <Target Name="SetAllProjectReferenceAsPublic"
+            AfterTargets="AssignProjectConfiguration"
+            BeforeTargets="ResolveProjectReferences">
+        <ItemGroup>
+            <ProjectReferenceWithConfiguration Update="@(ProjectReferenceWithConfiguration)" >
+                <Private>false</Private>
+            </ProjectReferenceWithConfiguration>
+            <ProjectReference Update="@(ProjectReference)" >
+                <Private>false</Private>
+            </ProjectReference>
+        </ItemGroup>
+    </Target>
+</Project>
